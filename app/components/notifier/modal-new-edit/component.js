@@ -39,6 +39,12 @@ const TYPES = [
     css:      'wechat',
     disabled: false,
   },
+  {
+    type:     'dingtalk',
+    label:    'notifierPage.notifierTypes.dingtalk',
+    css:      'dingtalk',
+    disabled: false,
+  },
 ];
 
 const RECIPIENT_TYPES = [

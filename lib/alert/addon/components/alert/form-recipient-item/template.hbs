@@ -12,6 +12,7 @@
     }}
   </div>
 
+ 
   <div class="col text-center text-centerpt-0 span-3-of-24">
     {{#if selectedNotifier.notifierLabel}}
       {{selectedNotifier.notifierLabel}}
@@ -20,19 +21,29 @@
     {{/if}}
   </div>
 
-  <div class="col mt-0 span-9-of-24">
-    {{input
-        classNames="form-control"
-        placeholder=recipientPlaceholder
-        value=model.recipient
-        showSearch=showSearch
-    }}
+  <div class="col mt-0 span-9-of-24"> 
+    {{#if (eq model.notifierType "dingtalk")}}
+      {{input
+          classNames="form-control"
+          disabled=true
+      }} 
+    {{else}}
+      {{input
+          classNames="form-control"
+          placeholder=recipientPlaceholder
+          value=model.recipient
+          showSearch=showSearch
+      }} 
+    {{/if}}  
     <p class="help-block text-info text-small">{{t 'alertPage.newOrEdit.recipient.helpText'}}</p>
+
   </div>
+ 
 
   <div class="col mt-0 span-1-of-24" style="padding-top:2px;">
     <button class="btn bg-link icon-btn {{if disableRemove 'disabled' ''}}" {{action "remove"}}>
       <span class="darken"><i class="icon icon-minus text-small"/></span>
     </button>
   </div>
+
 </section>
