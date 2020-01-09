@@ -45,6 +45,12 @@ const TYPES = [
     css:      'dingtalk',
     disabled: false,
   },
+  {
+    type:     'microsoft',
+    label:    'notifierPage.notifierTypes.microsoft',
+    css:      'microsoft',
+    disabled: false,
+  },
 ];
 
 const RECIPIENT_TYPES = [

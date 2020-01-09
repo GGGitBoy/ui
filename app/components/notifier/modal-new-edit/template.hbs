@@ -497,6 +497,63 @@
       </div>
     </div>
   </div>
+{{else if (eq currentType "microsoft")}}
+  <div class="row">
+    <div class="col span-12 mt-0 mb-0">
+      {{form-name-description
+        name=model.name
+        nameRequired=true
+        nameDisabled=false
+        description=model.description
+        bothColClass="col span-6 mt-0"
+        colClass="col span-12 mt-0"
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col span-12">
+      <div class="acc-label text-capitalize">
+        {{t "notifierPage.microsoft.url"}}{{field-required}}
+      </div>
+      {{input
+        classNames="form-control"
+        value=model.microsoftConfig.url
+        placeholder=(t "notifierPage.microsoft.urlPlaceholder")
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col span-12">
+      <label
+        class="acc-label text-capitalize"
+        for="input-microsoft-config-proxy-url"
+      >
+        {{t "notifierPage.proxyUrl.label"}}
+      </label>
+      {{input
+        classNames="form-control"
+        id="input-microsoft-config-proxy-url"
+        value=model.microsoftConfig.proxyUrl
+        placeholder=(t "notifierPage.proxyUrl.placeholder")
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col span-6">
+      <label class="acc-label">
+        {{t "notifierPage.sendResolved.label"}}
+      </label>
+      <div class="checkbox">
+        <label>
+          {{input
+            type="checkbox"
+            checked=model.sendResolved
+          }}
+          {{t "generic.enable"}}
+        </label>
+      </div>
+    </div>
+  </div>
 {{/if}}
 
 {{#if (eq currentType "slack")}}

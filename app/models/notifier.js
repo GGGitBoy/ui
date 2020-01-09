@@ -21,13 +21,14 @@ export default Resource.extend({
     return `${ get(this, 'displayName') } (${ upperCaseType })`
   }),
 
-  notifierTableLabel: computed('slackConfig', 'pagerdutyConfig', 'emailConfig', 'webhookConfig', 'wechatConfig', 'dingtalkConfig', function(){
+  notifierTableLabel: computed('slackConfig', 'pagerdutyConfig', 'emailConfig', 'webhookConfig', 'wechatConfig', 'dingtalkConfig', 'microsoftConfig', function(){
     const sc = get(this, 'slackConfig');
     const pc = get(this, 'pagerdutyConfig');
     const ec = get(this, 'smtpConfig');
     const wc = get(this, 'webhookConfig');
     const wcc = get(this, 'wechatConfig');
     const dtc = get(this, 'dingtalkConfig');
+    const mcs = get(this, 'microsoftConfig');
 
 
     if ( sc ) {
@@ -48,17 +49,22 @@ export default Resource.extend({
     if ( dtc ) {
       return C.NOTIFIER_TABLE_LABEL.DINGTALK;
     }
+    if ( mcs ) {
+      return C.NOTIFIER_TABLE_LABEL.MICROSOFT;
+    }
 
     return C.NOTIFIER_TABLE_LABEL.DEFAULT;
   }),
 
-  notifierType: computed('slackConfig', 'pagerdutyConfig', 'emailConfig', 'webhookConfig', 'wechatConfig', 'dingtalkConfig', function(){
+  notifierType: computed('slackConfig', 'pagerdutyConfig', 'emailConfig', 'webhookConfig', 'wechatConfig', 'dingtalkConfig', 'microsoftConfig', function(){
     const sc = get(this, 'slackConfig');
     const pc = get(this, 'pagerdutyConfig');
     const ec = get(this, 'smtpConfig');
     const wc = get(this, 'webhookConfig');
     const wcc = get(this, 'wechatConfig');
     const dtc = get(this, 'dingtalkConfig');
+    const mcs = get(this, 'microsoftConfig');
+
 
     if ( sc ) {
       return 'slack';
@@ -77,6 +83,9 @@ export default Resource.extend({
     }
     if ( dtc ) {
       return 'dingtalk';
+    }
+    if ( mcs ) {
+      return 'microsoft';
     }
 
     return null;
