@@ -2809,6 +2809,8 @@ notifierPage:
     pagerduty: PagerDuty
     webhook: Webhook
     wechat: WeChat
+    dingtalk: Dingtalk
+    microsoft: Microsoft
   slack:
     url: URL
     urlPlaceholder: e.g. https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
@@ -2863,12 +2865,20 @@ notifierPage:
     agentPlaceholder: e.g. 1000003
     corpPlaceholder: e.g. wwc0cc3d58f9b021b6
     defaultRecipientPlaceholder: e.g. 2
+  dingtalk:
+    url: URL
+    urlPlaceholder: Your webhook URL
+    secret: Secret
+    secretPlaceholder: Your secret
+  microsoft:
+    url: URL
+    urlPlaceholder: Your webhook URL
   proxyUrl:
     label: Proxy URL
     placeholder: e.g. http://my-proxy/
   sendResolved:
     label: Send Resolved Alerts
-
+  
   webhook:
     url: URL
     urlPlaceholder: Your webhook URL
