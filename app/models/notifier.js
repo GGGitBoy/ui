@@ -122,12 +122,14 @@ export default Resource.extend({
     return moment(d).fromNow();
   }),
 
-  notifierLabel: computed('slackConfig', 'pagerdutyConfig', 'emailConfig', 'webhookConfig', 'wechartConfig', function(){
+  notifierLabel: computed('slackConfig', 'pagerdutyConfig', 'emailConfig', 'webhookConfig', 'wechartConfig', 'dingtalkConfig', 'microsoftConfig', function(){
     const sc = get(this, 'slackConfig');
     const pc = get(this, 'pagerdutyConfig');
     const ec = get(this, 'smtpConfig');
     const wc = get(this, 'webhookConfig');
     const wcc = get(this, 'wechatConfig');
+    const dtc = get(this, 'dingtalkConfig');
+    const mcs = get(this, 'microsoftConfig');
 
     if ( sc ) {
       return 'Channel';
@@ -143,6 +145,12 @@ export default Resource.extend({
     }
     if ( wcc ) {
       return 'Recipient';
+    }
+    if ( dtc ) {
+      return '';
+    }
+    if ( mcs ) {
+      return '';
     }
 
     return 'Notifier';

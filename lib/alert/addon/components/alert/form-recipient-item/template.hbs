@@ -20,9 +20,8 @@
     {{/if}}
   </div>
 
-{{#if (not-eq model.notifierType "dingtalk")}}
-  {{#if (not-eq model.notifierType "microsoft")}}
   <div class="col mt-0 span-9-of-24"> 
+    {{#if (and (not-eq model.notifierType "dingtalk") (not-eq model.notifierType "dingtalk"))}}
       {{input
           classNames="form-control"
           placeholder=recipientPlaceholder
@@ -30,9 +29,8 @@
           showSearch=showSearch
       }} 
     <p class="help-block text-info text-small">{{t 'alertPage.newOrEdit.recipient.helpText'}}</p>
+    {{/if}}
   </div>
-  {{/if}} 
-{{/if}}  
 
   <div class="col mt-0 span-1-of-24" style="padding-top:2px;">
     <button class="btn bg-link icon-btn {{if disableRemove 'disabled' ''}}" {{action "remove"}}>
