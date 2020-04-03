@@ -381,6 +381,12 @@ export default Component.extend(NewOrEdit, ChildHook, {
     set(this, 'primaryResource', pr);
     set(this, 'originalPrimaryResource', pr);
 
+    const statefulSetConfig = get(service, 'statefulSetConfig')
+
+    if (statefulSetConfig.volumeClaimTemplates) {
+      delete statefulSetConfig.volumeClaimTemplates
+    }
+
     let errors = [];
 
     if (!get(this, 'namespace.name')) {

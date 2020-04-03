@@ -397,8 +397,12 @@ export default Component.extend({
         vct = get(row, 'vct');
         volumeClaimTemplates.push(vct)
       });
+    }
 
+    if (volumeClaimTemplates.length > 0){
       set(this, 'workload.statefulSetConfig.volumeClaimTemplates', volumeClaimTemplates);
+    } else {
+      delete statefulSetConfig.volumeClaimTemplates
     }
 
     ary.filterBy('mode', C.VOLUME_TYPES.CUSTOM_LOG_PATH).filterBy('volume.flexVolume.driver', LOG_AGGREGATOR)

@@ -52,6 +52,10 @@ export default Controller.extend({
     set(workload, 'completeLaunchConfigs', true);
     set(workload, 'completeUpdate', true);
 
+    if (workload.statefulSetConfig.volumeClaimTemplates) {
+      delete workload.statefulSetConfig.volumeClaimTemplates
+    }
+
     let slcs = get(workload, 'secondaryLaunchConfigs');
 
     slcs.removeAt(idx);
