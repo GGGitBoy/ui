@@ -119,6 +119,7 @@ module.exports = function(defaults) {
   app.import('vendor/ember-shortcuts.js');
   app.import('vendor/aliyun-sdk.js');
   app.import('vendor/cce-sdk.js');
+  app.import('node_modules/ember-qrcode-shim/vendor/qrcode.js');
 
   app.import('vendor/icons/fonts/rancher-icons.svg',   { destDir: 'assets/fonts/' });
   app.import('vendor/icons/fonts/rancher-icons.ttf',   { destDir: 'assets/fonts/' });
