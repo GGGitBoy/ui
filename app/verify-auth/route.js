@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import RSVP from 'rsvp';
-import { get } from '@ember/object';
+import { get, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import C from 'shared/utils/constants';
 import { addQueryParams, parseUrl } from 'shared/utils/util';
@@ -99,9 +99,30 @@ export default Route.extend(VerifyAuth, {
           responseType: 'cookie',
           description:  C.SESSION.DESCRIPTION,
           ttl:          C.SESSION.TTL,
-        }).then(() => {
-          return get(this, 'access').detect()
-            .then(() => this.transitionTo('authenticated'));
+        }).then((data) => {
+          console.log(data)
+
+          if ( data !== null && data.enabledMfa ) {
+            const authRedirect = get(currentProvider, 'redirectUrl');
+            let   redirect     = `${ window.location.origin }/validate?provider=${ providerType }`;
+
+            console.log(redirect)
+
+            console.log(currentProvider.baseType)
+
+            let url = addQueryParams(authRedirect, {
+              scope:          'read:org',
+              state:          this.generateLoginStateKey('github'),
+              redirect_uri:   redirect,
+            });
+
+            console.log(url)
+
+            window.location.href = url;
+          } else {
+            return get(this, 'access').detect()
+              .then(() => this.transitionTo('authenticated'));
+          }
         });
       }
     }
@@ -130,6 +151,10 @@ export default Route.extend(VerifyAuth, {
         window.close();
       }
     }
-  }
+  },
+
+  generateLoginStateKey(authType) {
+    return set(this, 'session.oauthState', `${ Math.random() }login${ authType }`)
+  },
 
 });

@@ -2795,7 +2795,15 @@ userPreferencesPage:
       label: Email
     password:
       text: Change Password
-
+  virtualMfa:
+    header: virtual MFA
+    status:
+      label: Status
+      on: mfa is on
+      off: mfa is off
+    mfa:
+      text: Change Mfa  
+   
 verifyPage:
   header: "You've successfully verified your email!"
   subtext: We need a few more pieces of information before we can finalize your account.
@@ -7782,6 +7790,14 @@ modalEditPassword:
     generate: 'Use a new randomly generated password:'
     manual: 'Set a specific password to use:'
   deleteTokens: Delete all existing API keys
+
+modalEditMfa:
+  edit:
+    title: Change Mfa
+  qrCode: Mfa QrCode
+  actionButton: Change
+  reacquire: Reacquire
+  captcha: Captcha
 
 modalFeedback:
   header: Welcome to {appName}!

@@ -1,0 +1,21 @@
+<div class="login">
+  <div class="header">
+    <h1>多因子认证</h1>
+    <p class="help-text">输入您的认证码</p>
+  </div>
+  {{input
+    value=captcha
+    classNames="form-control start"
+  }}
+  <div class="row mt-20">
+    <div class="col span-12 text-center">
+      <button  disabled={{countdown}} class="btn bg-primary" {{action "validate"}}>
+        {{#if countdown}}
+          等待({{countdown}}s)
+        {{else}}
+          验证
+        {{/if}} 
+      </button>
+    </div>
+  </div>
+</div>  
