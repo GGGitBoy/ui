@@ -16,5 +16,9 @@ export default Controller.extend({
     editPassword() {
       get(this, 'modal').toggleModal('modal-edit-password', { user: get(this, 'model.account') });
     },
+
+    editMfa() {
+      get(this, 'modal').toggleModal('modal-edit-mfa', { user: get(this, 'model.account') });
+    },
   },
 });

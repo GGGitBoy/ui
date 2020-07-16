@@ -35,6 +35,7 @@ Router.map(function() {
   this.route('verify-auth-azure');
   this.route('update-password', { path: '/update-password' });
   this.route('update-critical-settings', { path: '/update-setting' });
+  this.route('validate-mfa', { path: '/validate-mfa' });
 
   this.route('authenticated', { path: '/' }, function() {
     this.mount('nodes', {

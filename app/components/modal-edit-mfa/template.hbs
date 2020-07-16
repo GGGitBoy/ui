@@ -1,0 +1,37 @@
+<div class="header">
+  <h2>{{t 'modalEditMfa.edit.title'}}</h2>
+</div>
+  <div class="row mb-20">
+  {{#unless user.mfaStatus}}
+  <div class="col span-6">
+    <label class="acc-label">
+      {{t 'modalEditMfa.qrCode'}}
+    </label>
+    {{qr-code text=qrcode colorLight="#F7F7F7" width=155 height=155 correctLevel="L"}}  
+  </div>
+  <div class="row mt-20">
+    <div class="col span-12 text-left">
+      <button class="btn bg-primary" {{action "reacquire"}}>
+        {{t 'modalEditMfa.reacquire'}}
+      </button>
+    </div>
+  </div>
+  {{/unless}}
+  <div class="col span-6">
+    <label class="acc-label">
+      {{t 'modalEditMfa.captcha'}}
+    </label>
+    {{input
+      value=captcha
+      classNames="form-control start"
+    }}
+  </div>
+</div>
+{{top-errors errors=errors}}
+{{save-cancel
+  saveDisabled=saveDisabled
+  save=(action "changeMfa")
+  editing=true
+  editLabel='modalEditMfa.actionButton'
+  cancel=(action "cancel")
+}}

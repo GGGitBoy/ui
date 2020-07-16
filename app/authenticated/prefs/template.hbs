@@ -44,5 +44,30 @@
         </div>
       </div>
     </div>
-  </div>
+    <hr class="mt-20 mb-20" />
+    <h2>
+      {{t "userPreferencesPage.virtualMfa.header"}}
+    </h2>
+    <div class="box">
+      <div class="row">
+        <div class="col span-6">
+          <label class="acc-label">
+            {{t "userPreferencesPage.virtualMfa.status.label"}}
+          </label>
+          {{#if model.account.mfaStatus}}
+            {{t "userPreferencesPage.virtualMfa.status.on"}}
+          {{else}}
+            {{t "userPreferencesPage.virtualMfa.status.off"}}
+          {{/if}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col span-12 text-center">
+          <button class="btn bg-primary" {{action "editMfa"}}>
+             {{t "userPreferencesPage.virtualMfa.mfa.text"}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div> 
 </section>

@@ -81,6 +81,19 @@
   @user={{model.user}}
 />
 
+<div class="row">
+  <div class="col span-12">
+      <label>
+        {{input
+          type="checkbox"
+          checked=primaryResource.mfaStatus
+          disabled=disableMfa
+        }}
+        {{t "editUser.form.mfaStatus.label"}}
+      </label>
+  </div>
+</div>
+
 {{top-errors errors=errors}}
 {{save-cancel
   saveDisabled=passwordsMismatch

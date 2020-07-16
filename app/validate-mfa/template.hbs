@@ -1,0 +1,22 @@
+<div class="login">
+  <div class="header">
+    <h1>{{t 'modalValidateMfa.login.title'}}</h1>
+    <p class="help-text">{{t 'modalValidateMfa.login.help'}}</p>
+  </div>
+  {{input
+    value=captcha
+    classNames="form-control start"
+  }}
+  <div class="row mt-20">
+    <div class="col span-12 text-center">
+      <button  disabled={{countdown}} class="btn bg-primary" {{action "validate"}}>
+        {{#if countdown}}
+          {{t 'modalValidateMfa.genericLoginLabel'}}({{countdown}}s)
+        {{else}}
+          {{t 'modalValidateMfa.validate'}}
+        {{/if}} 
+      </button>
+    </div>
+  </div>
+  {{top-errors errors=errors}}
+</div>  
